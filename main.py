@@ -3,6 +3,7 @@ import time
 
 import SearchSerialPort
 import CheckSerialPort
+from Rectangle import *
 
 from Variables import *
 
@@ -54,27 +55,31 @@ while (True):
         # No Frame Error
         if availability is False or frame is None:
             raise CV2Exception("no frame")
-        print("0000")
+
         # trapezium Pinting
         Trapezium.Trapezium(frame, width, height, pointColor, pointRadius, lineColor, lineWidth, textColor,
                             textFont, bottomAngleA, bottomAngleD, topAngleB, topAngleC)
-        print("1111")
+
         # Color Filter
-        percolator, countur = ColorConvert(frame, bottom_hsv, top_hsv, kernel, counturColor, counturWidth)
-        print("2222")
+        print("1")
+        countur, percolator = ColorConvert(frame, bottom_hsv, top_hsv, kernel, counturColor, counturWidth)
+        print("2")
+        rect =  contourCoordinat(countur, percolator, frame)
+        frame = rect
         # Rectangular Contour Selection
         # Rect = cv2.getStructuringElement()
 
         # Event Processing
-
+        print("3")
         # Posting a Message
         port.write(b"ARDUINO.")
 
         # Imshow
         cv2.imshow('frame', frame)
-        cv2.imshow('percolator', percolator)
+        #cv2.imshow('percolator', countur)
+
         # cv2.imshow('Rect', Rect)
-        print("3333")
+
     # End Exception
     except Exception as e:
         print(e, e.__class__.__name__)

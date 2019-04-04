@@ -14,7 +14,7 @@ def ColorConvert(__image, __bottom_hsv, __top_hsv, __kernel, __counturColor, __c
     _percolator = cv2.morphologyEx(__percolator, cv2.MORPH_OPEN, open_kern, iterations=2)
     percolator = cv2.morphologyEx(_percolator, cv2.MORPH_CLOSE, open_kern)
 
-    contours, hierarchy = cv2.findContours(percolator.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    contours, hierarchy = cv2.findContours(percolator, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     cv2.drawContours(__image, contours, -1, __counturColor, __counturWidth, cv2.LINE_AA, hierarchy, 1)
 
-    return percolator,contours
+    return contours, hierarchy

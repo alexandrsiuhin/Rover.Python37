@@ -36,7 +36,7 @@ topAngleC = 0.8
 
 ''' SERIAL PORT '''
 baudrate = 9600
-timeSleep = 5
+timeSleep = 3
 
 ''' CAMERA FRAME RATE'''
 fps = 30
