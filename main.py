@@ -54,14 +54,14 @@ while (True):
         # No Frame Error
         if availability is False or frame is None:
             raise CV2Exception("no frame")
-
+        print("0000")
         # trapezium Pinting
         Trapezium.Trapezium(frame, width, height, pointColor, pointRadius, lineColor, lineWidth, textColor,
                             textFont, bottomAngleA, bottomAngleD, topAngleB, topAngleC)
-
+        print("1111")
         # Color Filter
-        percolator = ColorConvert(frame, bottom_hsv, top_hsv, kernel, counturColor, counturWidth)
-
+        percolator, countur = ColorConvert(frame, bottom_hsv, top_hsv, kernel, counturColor, counturWidth)
+        print("2222")
         # Rectangular Contour Selection
         # Rect = cv2.getStructuringElement()
 
@@ -74,7 +74,7 @@ while (True):
         cv2.imshow('frame', frame)
         cv2.imshow('percolator', percolator)
         # cv2.imshow('Rect', Rect)
-
+        print("3333")
     # End Exception
     except Exception as e:
         print(e, e.__class__.__name__)
